@@ -149,6 +149,12 @@
   <ItemGroup>
     <ClCompile Include="MechaCoders.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="school.h" />
+    <ClInclude Include="student.h" />
+    <ClInclude Include="teacher.h" />
+    <ClInclude Include="team.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

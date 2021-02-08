@@ -1,20 +1,42 @@
-﻿// MechaCoders.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+﻿#include <iostream>
+#include <string>
 using namespace std;
-int main()
+
+int enterUserInput()
 {
-    // test
+    int userInput;
+    cin >> userInput;
+    return userInput;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+bool mainMenu()
+{
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    cout << " Choose an option from the menu by entering a number: ";
+    int userInput = enterUserInput();
+
+    switch (userInput)
+    {
+    case 1:
+        // Add, edit, delete and show data
+        break;
+    case 2: 
+        // show information about the project
+        break;
+    case 3:
+        // show exit message
+        return false;
+        break;
+    default:
+        cout << "\n Enter a valid number! \n";
+        break;
+    }
+    return true;
+}
+
+int main()
+{
+    // show greetings menu
+
+    while (mainMenu());
+}
