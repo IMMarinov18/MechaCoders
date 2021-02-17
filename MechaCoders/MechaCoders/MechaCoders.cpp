@@ -1,6 +1,66 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
+fstream students;
+fstream teams;
+fstream teachers;
+fstream schools;
+
+
+void openFileStudents()
+{
+    students.open("students.txt", ios::in | ios::out | ios::trunc);
+}
+
+void openFileTeams()
+{
+    teams.open("teams.txt", ios::in | ios::out | ios::trunc);
+}
+
+void openFileTeachers()
+{
+    teachers.open("teachers.txt", ios::in | ios::out | ios::trunc);
+}
+
+void openFileSchools()
+{
+    schools.open("schools.txt", ios::in | ios::out | ios::trunc);
+}
+void openFiles()
+{
+    openFileStudents();
+    openFileTeams();
+    openFileTeachers();
+    openFileSchools();
+}
+
+void closeFileStudents()
+{
+    students.close();
+}
+
+void closeFileTeams()
+{
+    teams.close();
+}
+
+void closeFileTeachers()
+{
+    teachers.close();
+}
+
+void closeFileSchools()
+{
+    schools.close();
+}
+void closeFiles()
+{
+    closeFileStudents();
+    closeFileTeams();
+    closeFileTeachers();
+    closeFileSchools();
+}
 
 int enterUserInput()
 {
@@ -38,5 +98,7 @@ int main()
 {
     // show greetings menu
 
+    openFiles();
     while (mainMenu());
+    closeFiles();
 }
