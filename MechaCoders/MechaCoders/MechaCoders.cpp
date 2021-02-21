@@ -71,6 +71,10 @@ int enterUserInput()
 
 bool mainMenu()
 {
+    cout << "|-------------WELCOME-------------|" << endl;
+    cout << "1. Add, Edit, Delete and Show Data." << endl;
+    cout << "2. Information about our team and project." << endl;
+    cout << "3. Exit the project" << endl;
 
     cout << " Choose an option from the menu by entering a number: ";
     int userInput = enterUserInput();
@@ -84,7 +88,7 @@ bool mainMenu()
         // show information about the project
         break;
     case 3:
-        // show exit message
+        cout << "Thank you for you cooperation!";
         return false;
         break;
     default:
