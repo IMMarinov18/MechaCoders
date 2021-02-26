@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include "student.h"
+using namespace std;
 
 struct TEAM {
-    std::string teamName;
-    std::string description;
-    std::string dateOfSteUp;
-    STUDENT students[10];
+    string teamName;
+    string description;
+    string dateOfSteUp;
 };
