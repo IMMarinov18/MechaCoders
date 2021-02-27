@@ -12,22 +12,22 @@ fstream schools;
 
 void openFileStudents()
 {
-    students.open("students.txt", ios::in | ios::out | ios::trunc | ios::app);
+    students.open("students.txt", ios::in | ios::out | ios::app);
 }
 
 void openFileTeams()
 {
-    teams.open("teams.txt", ios::in | ios::out | ios::trunc);
+    teams.open("teams.txt", ios::in | ios::out);
 }
 
 void openFileTeachers()
 {
-    teachers.open("teachers.txt", ios::in | ios::out | ios::trunc);
+    teachers.open("teachers.txt", ios::in | ios::out);
 }
 
 void openFileSchools()
 {
-    schools.open("schools.txt", ios::in | ios::out | ios::trunc);
+    schools.open("schools.txt", ios::in | ios::out);
 }
 void openAllFiles()
 {
