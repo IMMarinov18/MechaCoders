@@ -17,17 +17,17 @@ void openFileStudents()
 
 void openFileTeams()
 {
-    teams.open("teams.txt", ios::in | ios::out);
+    teams.open("teams.txt", ios::in | ios::out | ios::app);
 }
 
 void openFileTeachers()
 {
-    teachers.open("teachers.txt", ios::in | ios::out);
+    teachers.open("teachers.txt", ios::in | ios::out | ios::app);
 }
 
 void openFileSchools()
 {
-    schools.open("schools.txt", ios::in | ios::out);
+    schools.open("schools.txt", ios::in | ios::out | ios::app);
 }
 void openAllFiles()
 {

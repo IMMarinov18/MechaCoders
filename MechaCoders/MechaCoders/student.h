@@ -7,22 +7,39 @@
 using namespace std;
 
 struct STUDENT {
+    int id;
     string studentFName;
     string studentLName;
     string grade;
     char Class;
     string studentEmail;
-    TEAM* studentsTeam;
+    TEAM studentsTeam;
 };
 
-std::vector<string> getAllStudentsByName(const std::string& inputName)
+int getLinesFromFile()
+{
+    string text;
+    const char newLine = '.';
+    int numLines = 0;
+    while (getline(students, text, '\n'))
+    {
+        for (size_t i = 0; i < text.length(); i++)
+        {
+            if (text.at(i) == newLine)
+            {
+                numLines++;
+            }
+        }
+    }
+    return numLines;
+}
+
+std::vector<string> getAllStudentsByFName(const std::string& inputName)
 {
     vector<string> allFoundNames;
-    //userFile.open("students.txt", ios::in | ios::out | ios::trunc);
-    cout << students.is_open();
     if (!students.is_open()) return {};
 
-    for (string line; getline(students, line); ) // Loops threw every line form the txt file
+    for (string line; getline(students, line); ) // Loops threw every line from the txt file
     {
         bool nameFound = false;
         for (int i = 0; nameFound == false and i < line.length(); i++)
@@ -30,18 +47,15 @@ std::vector<string> getAllStudentsByName(const std::string& inputName)
             string name = "";
             char symbol = line.at(i);
             if (symbol) {
-                if (symbol == ';') {
-                    for (int j = i + 1; j < line.length(); j++)
+                if (symbol == ' ') {
+                    for (int j = i - 1; j < line.length(); j++)
                     {
                         if (line[j] != ';')
                         {
                             name += line.at(i);
-                        }
-                        else
-                        {
+                        } else {
                             allFoundNames.push_back(name);
                         }
-
                     }
                 }
             }
@@ -49,11 +63,20 @@ std::vector<string> getAllStudentsByName(const std::string& inputName)
     }
     return allFoundNames;
 }
-void AddStudent(const STUDENT& givenStudent)
+void addStudent(const STUDENT& givenStudent)
 {
-    if (!students.is_open()) return;
+    try {
+        if (!students.is_open()) throw "1";
+        string saveLine = givenStudent.studentFName + " " + givenStudent.studentLName + " " + givenStudent.grade + " " + givenStudent.Class + " " + givenStudent.studentEmail + " " + givenStudent.studentsTeam.teamName + ";";
+        cout << saveLine;
+        students << saveLine;
+    }
+    catch (string val) {
+        if (val == "1") {cout << "Couldn't open file.";}
+    }
+}
 
-    string saveLine = "{;" + givenStudent.studentFName + ";" + givenStudent.studentLName + ";}\n";
-    cout << saveLine;
-    students << saveLine;
+void deleteStudent()
+{
+
 }

@@ -13,21 +13,20 @@ void infoAboutProject()
 
 void mainMenuInteraction1Menu()
 {
-    cout << "+--------------------+"<<endl;
-    cout << "|  1. Add Data       |" << endl;
-    cout << "|--------------------|"<<endl;
-    cout << "|  2. Change Data    |" << endl;
-    cout << "|--------------------|"<<endl;
-    cout << "|  3. Show All Data  |" << endl;
-    cout << "|--------------------|"<<endl;
-    cout << "|  4. Find Data      |" << endl;
-    cout << "|--------------------|"<<endl;
-    cout << "|  5. Delete Data    |" << endl;
-    cout << "|--------------------|"<<endl;
-    cout << "|0. Back to Main Menu| " << endl;
-    cout << "+--------------------+"<<endl;
-     cout<<endl;
-    cout<<"Your choice?: ";
+    cout << "+----------------------+"<<endl;
+    cout << "|    1. Add Data       |" << endl;
+    cout << "|----------------------|"<<endl;
+    cout << "|    2. Change Data    |" << endl;
+    cout << "|----------------------|"<<endl;
+    cout << "|    3. Show All Data  |" << endl;
+    cout << "|----------------------|"<<endl;
+    cout << "|    4. Find Data      |" << endl;
+    cout << "|----------------------|"<<endl;
+    cout << "|    5. Delete Data    |" << endl;
+    cout << "|----------------------|"<<endl;
+    cout << "| 0. Back to Main Menu | " << endl;
+    cout << "+----------------------+"<<endl;
+    cout << "Your choice?: ";
 }
 
 void chooseTypeText()
@@ -41,8 +40,7 @@ void chooseTypeText()
     cout << "|-----------------|" << endl;
     cout << "|   4. Students   |" << endl;
     cout << "+-----------------+" << endl;
-    cout<<endl;
-    cout<<"Your choice?: ";
+    cout << endl << "Your choice?: ";
 }
 
 void mainMenuText()

@@ -39,13 +39,10 @@ void enterStudentInput()
     cin >> student.Class;
     cout << "(- if student doesn't have an email) Enter Student's Email: ";
     cin >> student.studentEmail;
-    AddStudent(student);
-    cout << endl << "Student has been added successfully!" << endl;
-    /*catch (exception& e)
-    {
-        cout << "Exception has occured.";
-    }*/
-
+    cout << "(- if student doesn't have a team) Enter Student's Team: ";
+    cin >> student.studentsTeam.teamName;
+    addStudent(student);
+    cout << endl << " Student has been added successfully!" << endl;
 }
 
 
@@ -68,6 +65,17 @@ void showStudentsMenu()
         }
         if (val == '3')
         {
+            chosenCorrect = true;
+        }
+        if (val == '4')
+        {
+            clearScreen();
+            string input = enterStringInput();
+            vector<string> table = getAllStudentsByFName(input);
+            for (auto i = table.begin(); i <= table.end(); i++)
+            {
+                cout << *i;
+            }
             chosenCorrect = true;
         }
         if (chosenCorrect == false)
