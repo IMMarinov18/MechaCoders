@@ -80,33 +80,60 @@ void addStudent(const STUDENT& givenStudent)
 
 void deleteStudentByLine(int n)
 {
-
-    // open file in write mode or out mode 
     ofstream ofs;
     ofs.open("temp.txt", ofstream::out);
 
-    // loop getting single characters 
     char c;
     int line_no = 1;
     while (students.get(c))
     {
-        // if a newline character 
         if (c == '\n')
             line_no++;
 
-        // file content not to be deleted 
         if (line_no != n)
             ofs << c;
     }
 
-    // closing output file 
     ofs.close();
 
-    // closing input file 
     students.close();
 
-    // remove the original file 
     remove("students.txt");
-    // rename the file 
-    rename("temp.txt", "students.txt");
+    rename("temp.txt","students.txt");
+
+    openFileStudents();
+}
+
+void changeStudentByLine() {
+    string strReplace = "HELLO";
+    string strNew = "GOODBYE";
+    ifstream filein("filein.txt"); //File to read from
+    ofstream fileout("fileout.txt"); //Temporary file
+    if (!filein || !fileout)
+    {
+        cout << "Error opening files!" << endl;
+        return;
+    }
+
+    string strTemp;
+    //bool found = false;
+    while (filein >> strTemp)
+    {
+        if (strTemp == strReplace) {
+            strTemp = strNew;
+            //found = true;
+        }
+        strTemp += "\n";
+        fileout << strTemp;
+        //if(found) break;
+    }
+}
+
+
+void showAllStudents() {
+    std::string text;
+    while (getline(students, text))
+    {
+        cout << text << endl;
+    }
 }

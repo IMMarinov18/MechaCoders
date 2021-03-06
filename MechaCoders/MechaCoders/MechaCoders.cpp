@@ -6,22 +6,19 @@
 #include "functions.h"
 using namespace std;
 
-void chooseDataType()
-{
+void chooseDataType() {
     chooseTypeText();
     beforeInputText();
     showInputTypeMenu();
 }
 
-bool mainMenu()
-{
+bool mainMenu() {
     mainMenuText(); // Method in "menutexts.h"
     beforeInputText();
     return showInputMainMenuInteraction();
 }
 
-int main()
-{
+int main() {
     openAllFiles();
     while (mainMenu());
     closeAllFiles();

@@ -65,6 +65,9 @@ void showStudentsMenu()
         }
         if (val == '3')
         {
+            clearScreen();
+            showAllStudents();
+            system("pause");
             chosenCorrect = true;
         }
         if (val == '4')
