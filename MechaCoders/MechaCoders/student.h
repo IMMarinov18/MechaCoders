@@ -19,7 +19,7 @@ struct STUDENT {
 int getLinesFromFile()
 {
     string text;
-    const char newLine = '.';
+    const char newLine = ';';
     int numLines = 0;
     while (getline(students, text, '\n'))
     {
@@ -31,6 +31,8 @@ int getLinesFromFile()
             }
         }
     }
+    cout << numLines;
+    cin >> numLines;
     return numLines;
 }
 
@@ -67,7 +69,7 @@ void addStudent(const STUDENT& givenStudent)
 {
     try {
         if (!students.is_open()) throw "1";
-        string saveLine = givenStudent.studentFName + " " + givenStudent.studentLName + " " + givenStudent.grade + " " + givenStudent.Class + " " + givenStudent.studentEmail + " " + givenStudent.studentsTeam.teamName + ";";
+        string saveLine ="\n" + givenStudent.studentFName + " " + givenStudent.studentLName + " " + givenStudent.grade + " " + givenStudent.Class + " " + givenStudent.studentEmail + " " + givenStudent.studentsTeam.teamName + ";";
         cout << saveLine;
         students << saveLine;
     }
@@ -76,7 +78,35 @@ void addStudent(const STUDENT& givenStudent)
     }
 }
 
-void deleteStudent()
+void deleteStudentByLine(int n)
 {
 
+    // open file in write mode or out mode 
+    ofstream ofs;
+    ofs.open("temp.txt", ofstream::out);
+
+    // loop getting single characters 
+    char c;
+    int line_no = 1;
+    while (students.get(c))
+    {
+        // if a newline character 
+        if (c == '\n')
+            line_no++;
+
+        // file content not to be deleted 
+        if (line_no != n)
+            ofs << c;
+    }
+
+    // closing output file 
+    ofs.close();
+
+    // closing input file 
+    students.close();
+
+    // remove the original file 
+    remove("students.txt");
+    // rename the file 
+    rename("temp.txt", "students.txt");
 }

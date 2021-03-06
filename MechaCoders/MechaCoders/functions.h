@@ -60,7 +60,7 @@ void showStudentsMenu()
         }
         if (val == '2')
         {
-
+            clearScreen();
             chosenCorrect = true;
         }
         if (val == '3')
@@ -76,6 +76,17 @@ void showStudentsMenu()
             {
                 cout << *i;
             }
+            chosenCorrect = true;
+        }
+        if (val == '5')
+        {
+            clearScreen();
+            string input = enterStringInput();
+            int intInput = stoi(input);
+            deleteStudentByLine(intInput);
+        }
+        if (val == '0')
+        {
             chosenCorrect = true;
         }
         if (chosenCorrect == false)
