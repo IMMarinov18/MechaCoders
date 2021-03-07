@@ -36,9 +36,9 @@ int getLinesFromFile()
     return numLines;
 }
 
-std::vector<string> getAllStudentsByFName(const std::string& inputName)
+std::vector<string> FindStudentsByFName(const std::string& inputName)
 {
-    vector<string> allFoundNames;
+    vector<string> allFoundNames{NULL};
     if (!students.is_open()) return {};
 
     for (string line; getline(students, line); ) // Loops threw every line from the txt file
@@ -46,13 +46,13 @@ std::vector<string> getAllStudentsByFName(const std::string& inputName)
         bool nameFound = false;
         for (int i = 0; nameFound == false and i < line.length(); i++)
         {
-            string name = "";
+            string name = " ";
             char symbol = line.at(i);
             if (symbol) {
                 if (symbol == ' ') {
                     for (int j = i - 1; j < line.length(); j++)
                     {
-                        if (line[j] != ';')
+                        if (line[j] != ' ')
                         {
                             name += line.at(i);
                         } else {

@@ -15,6 +15,7 @@ void clearScreen()
 char enterCharInput()
 {
     char userInput;
+
     cin >> userInput;
     return userInput;
 }
@@ -74,7 +75,7 @@ void showStudentsMenu()
         {
             clearScreen();
             string input = enterStringInput();
-            vector<string> table = getAllStudentsByFName(input);
+            vector<string> table = FindStudentsByFName(input);
             for (auto i = table.begin(); i <= table.end(); i++)
             {
                 cout << *i;

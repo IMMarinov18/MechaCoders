@@ -4,28 +4,28 @@ using namespace std;
 
 void infoAboutProject()
 {
-    cout << "+-----------------------+"<<endl;
+    cout << "+-----------------------+" <<endl;
     cout << "|  MechaCoders Project  |" << endl;
-    cout << "|-----------------------|"<<endl;
-    cout << "|      Version 1.0      | " << endl << endl;
-    cout << "+-----------------------+"<<endl;
+    cout << "|-----------------------|" <<endl;
+    cout << "|      Version 1.0      |" << endl;
+    cout << "+-----------------------+" <<endl;
 }
 
 void mainMenuInteraction1Menu()
 {
-    cout << "+----------------------+"<<endl;
+    cout << "+----------------------+" << endl;
     cout << "|    1. Add Data       |" << endl;
-    cout << "|----------------------|"<<endl;
+    cout << "|----------------------|" << endl;
     cout << "|    2. Change Data    |" << endl;
-    cout << "|----------------------|"<<endl;
+    cout << "|----------------------|" << endl;
     cout << "|    3. Show All Data  |" << endl;
-    cout << "|----------------------|"<<endl;
+    cout << "|----------------------|" << endl;
     cout << "|    4. Find Data      |" << endl;
-    cout << "|----------------------|"<<endl;
+    cout << "|----------------------|" << endl;
     cout << "|    5. Delete Data    |" << endl;
-    cout << "|----------------------|"<<endl;
-    cout << "| 0. Back to Main Menu | " << endl;
-    cout << "+----------------------+"<<endl;
+    cout << "|----------------------|" << endl;
+    cout << "| 0. Back to Main Menu |" << endl;
+    cout << "+----------------------+" << endl;
     cout << "Your choice?: ";
 }
 
