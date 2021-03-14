@@ -150,6 +150,7 @@
     <ClCompile Include="datasavingandloading.cpp" />
     <ClCompile Include="functionTexts.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="schools.cpp" />
     <ClCompile Include="Students.cpp" />
     <ClCompile Include="teachers.cpp" />
     <ClCompile Include="teams.cpp" />

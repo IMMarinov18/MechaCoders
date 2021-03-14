@@ -6,12 +6,12 @@
 struct TEACHER {
     std::string teachersFName;
     std::string teachersLName;
-    std::vector<TEAM> teams[10];
     std::string teacherEmail;
     std::string grade;
     char Class;
 };
 
-extern void addTeacher(const TEACHER& gt);
-extern void showAllTeachers();
-extern void FindTeacherByFName(const std::string& inputName);
+void addTeacher(const TEACHER& gt);
+void deleteTeacherByLine(int n);
+void showAllTeachers();
+void FindTeacherByFName(const std::string& inputName);

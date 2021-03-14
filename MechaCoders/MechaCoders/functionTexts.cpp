@@ -4,8 +4,16 @@
 #include "teacher.h"
 #include "textMenus.h"
 #include "functions.h"
-
+#include <ctime>
+#include "school.h"
 using namespace std;
+
+void enterDescription(std::string &desc)
+{
+    cin.ignore();
+    getline(std::cin, desc);
+    return;
+}
 
 void removeSpaces(string& str) {
     if (str.empty())
@@ -76,16 +84,55 @@ void enterTeacherInput()
     TEACHER teacher;
     cout << "Enter Teacher's First Name: ";
     cin >> teacher.teachersFName;
+    removeSpaces(teacher.teachersFName);
     cout << "Enter Student's Last Name: ";
     cin >> teacher.teachersLName;
+    removeSpaces(teacher.teachersLName);
     cout << "Enter Teacher's Grade: ";
     cin >> teacher.grade;
+    removeSpaces(teacher.grade);
     cout << "Enter Teacher's Class: ";
     cin >> teacher.Class;
     cout << "(- if student doesn't have an email) Enter Student's Email: ";
     cin >> teacher.teacherEmail;
+    removeSpaces(teacher.teacherEmail);
     addTeacher(teacher);
     cout << endl << "Teacher has been added successfully!" << endl;
+}
+
+void enterSchoolInput()
+{
+    SCHOOL school;
+    cout << "Enter School's Name: ";
+    cin >> school.schoolName;
+    removeSpaces(school.schoolName);
+    cout << "Enter School's Town: ";
+    cin >> school.town;
+    removeSpaces(school.town);
+    cout << "Enter School's Address: ";
+    cin.ignore();
+    getline(cin, school.address);
+    removeSpaces(school.address);
+    addSchool(school);
+    cout << endl << "School has been added successfully!" << endl;
+}
+
+void enterTeamInput()
+{
+    TEAM team;
+    cout << "Enter Team\'s Name: ";
+    cin >> team.teamName;
+    cout << "Enter Team\'s Description: " << endl;
+    enterDescription(team.description);
+
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    
+    string time = to_string((5 + ltm->tm_hour)) + ':' + to_string(30 + ltm->tm_min) + ':' + to_string(ltm->tm_sec);
+    team.creationDate = time;
+
+    addTeam(team);
+    cout << endl << "Team has been added successfully!" << endl;
 }
 
 void showStudentsMenu()
@@ -149,14 +196,14 @@ void showTeamsMenu()
         {
             // Add Team
             clearScreen();
-            enterStudentInput();
+            enterTeamInput();
             chosenCorrect = true;
         }
         if (val == '2')
         {
             // Show All Teams
             clearScreen();
-            showAllStudents();
+            showAllTeams();
             system("pause");
             chosenCorrect = true;
         }
@@ -165,7 +212,7 @@ void showTeamsMenu()
             // Find A Team
             clearScreen();
             string input = enterStringInput();
-            FindStudentsByFName(input);
+            FindTeamByName(input);
             chosenCorrect = true;
         }
         if (val == '4')
@@ -174,7 +221,7 @@ void showTeamsMenu()
             clearScreen();
             string input = enterStringInput();
             int intInput = stoi(input);
-            deleteStudentByLine(intInput);
+            deleteTeamByLine(intInput);
         }
         if (val == '0')
         {
@@ -184,7 +231,7 @@ void showTeamsMenu()
         if (chosenCorrect == false)
         {
             clearScreen();
-            mainMenuInteraction1Menu();
+            mainMenuInteraction3Menu();
             retryInput(); // Method in "menutexts.h"
         }
     }
@@ -230,11 +277,62 @@ void showTeachersMenu()
         if (chosenCorrect == false)
         {
             clearScreen();
-            mainMenuInteraction1Menu();
+            mainMenuInteraction2Menu();
             retryInput(); // Method in "texts.cpp"
         }
     }
     clearScreen();
+}
+
+void showSchoolsMenu()
+{
+    bool chosenCorrect = false;
+    while (!chosenCorrect)
+    {
+        char val = enterCharInput();
+        if (val == '1')
+        {
+            // Add School
+            clearScreen();
+            enterSchoolInput();
+            chosenCorrect = true;
+        }
+        if (val == '2')
+        {
+            // Show All Schools
+            clearScreen();
+            showAllSchools();
+            system("pause");
+            chosenCorrect = true;
+        }
+        if (val == '3')
+        {
+            // Find A School
+            clearScreen();
+            string input = enterStringInput();
+            FindSchoolByName(input);
+            chosenCorrect = true;
+        }
+        if (val == '4')
+        {
+            // Delete School
+            clearScreen();
+            string input = enterStringInput();
+            int intInput = stoi(input);
+            deleteSchoolByLine(intInput);
+        }
+        if (val == '0')
+        {
+            // Go Back
+            chosenCorrect = true;
+        }
+        if (chosenCorrect == false)
+        {
+            clearScreen();
+            mainMenuInteraction4Menu();
+            retryInput(); // Method in "menutexts.h"
+        }
+    }
 }
 
 bool showInputMainMenuInteraction()
@@ -263,7 +361,7 @@ bool showInputMainMenuInteraction()
             clearScreen();
             programLeaveText(); // Method in "menutexts.h"
             closeAllFiles();
-            exit(1);
+            exit(0);
         }
         if (chosenCorrect == false)
         {
@@ -286,6 +384,8 @@ void showInputTypeMenu()
         if (val == '1')
         {
             //Schools
+            mainMenuInteraction4Menu();
+            showSchoolsMenu();
             chosenCorrect = true;
         }
         if (val == '2')
@@ -298,11 +398,13 @@ void showInputTypeMenu()
         if (val == '3')
         {
             // Teams
+            mainMenuInteraction3Menu();
+            showTeamsMenu();
             chosenCorrect = true;
         }
         if (val == '4')
         {
-            mainMenuInteraction1Menu();
+            mainMenuInteraction2Menu();
             showStudentsMenu();
             // Students
             chosenCorrect = true;

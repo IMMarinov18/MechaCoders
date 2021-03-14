@@ -8,11 +8,11 @@ using namespace std;
 void addTeacher(const TEACHER& givenTeacher)
 {
     try {
-        string saveLine = "\n" + givenTeacher.teachersFName + "," + givenTeacher.teachersLName + "," + givenTeacher.grade + "," + givenTeacher.Class + "," + givenTeacher.teacherEmail +";";
+        string saveLine = "\n" + givenTeacher.teachersFName + "|" + givenTeacher.teachersLName + "|" + givenTeacher.grade + "|" + givenTeacher.Class + "|" + givenTeacher.teacherEmail +";";
         cout << saveLine;
         teachers << saveLine;
-        closeAllFiles();
-        openAllFiles();
+        closeTeachersFile();
+        openTeachersFile();
     }
     catch (string val) {
         if (val == "1") { cout << "Couldn't open file."; }
@@ -39,10 +39,10 @@ void deleteTeacherByLine(int n)
 
     teachers.close();
 
-    remove("students.txt");
-    int _ = rename("temp.txt", "students.txt");
+    remove("teachers.txt");
+    int _ = rename("temp.txt", "teachers.txt");
 
-    openAllFiles();
+    openTeachersFile();
 }
 
 void showAllTeachers() {
@@ -57,7 +57,7 @@ void showAllTeachers() {
         string name;
         for (int i = 0; i < text.length(); i++) {
             char symbol = text.at(i);
-            if (symbol == ',') {
+            if (symbol == '|') {
                 cout << name << " ";
                 name.clear();
             }
@@ -79,7 +79,7 @@ void FindTeacherByFName(const std::string& inputName)
         string name = "";
         for (int i = 0; i < line.length(); i++) {
             char symbol = line.at(i);
-            if (symbol == ',') {
+            if (symbol == '|') {
                 break;
             }
             else {

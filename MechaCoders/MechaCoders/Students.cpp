@@ -72,11 +72,11 @@ void addStudent(const STUDENT& givenStudent)
 {
     try {
         if (!students.is_open()) throw "1";
-        string saveLine = "\n" + givenStudent.studentFName + "|" + givenStudent.studentLName + "|" + givenStudent.grade + "|" + givenStudent.Class + "|" + givenStudent.studentEmail + "|" + givenStudent.studentsTeam.teamName + "|";
+        string saveLine = "\n" + givenStudent.studentFName + "|" + givenStudent.studentLName + "|" + givenStudent.grade + "|" + givenStudent.Class + "|" + givenStudent.studentEmail + "|" + givenStudent.studentsTeam.teamName + ";";
         cout << saveLine;
         students << saveLine;
-        closeAllFiles();
-        openAllFiles();
+        closeStudentsFile();
+        openStudentsFile();
     }
     catch (string val) {
         if (val == "1") { cout << "Couldn't open file."; }
@@ -101,12 +101,12 @@ void deleteStudentByLine(int n)
 
     ofs.close();
 
-    students.close();
+    closeStudentsFile();
 
     remove("students.txt");
     int _ = rename("temp.txt", "students.txt");
 
-    openAllFiles();
+    openStudentsFile();
 }
 
 void showAllStudents() {

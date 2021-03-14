@@ -36,6 +36,9 @@
     <ClCompile Include="teams.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="schools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="student.h">

@@ -1,0 +1,4 @@
+
+team|desc|23:30:8;
+TeamSkyWars|This is a skywars team.|23:33:13;
+TeamName|This is my description.|23:46:5;

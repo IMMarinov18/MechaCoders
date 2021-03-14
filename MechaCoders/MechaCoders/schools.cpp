@@ -1,22 +1,22 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "team.h"
+#include "school.h"
 #include "main.h"
 #include "student.h"
 
 using namespace std;
 
-void FindTeamByName(const std::string& inputName)
+void FindSchoolByName(const std::string& inputName)
 {
-    if (!teams.is_open()) return;
+    if (!schools.is_open()) return;
     string line;
     int counter = 0;
-    while (getline(teams, line, '\n')) {
+    while (getline(schools, line, '\n')) {
         string name = "";
         for (int i = 0; i < line.length(); i++) {
             char symbol = line.at(i);
-            if (symbol == ',') {
+            if (symbol == '|') {
                 break;
             }
             else {
@@ -30,28 +30,27 @@ void FindTeamByName(const std::string& inputName)
         }
     }
     if (counter < 1)
-        cout << "No student name matches found." << endl;
+        cout << "No school name matches found." << endl;
 }
-void addTeam(const TEAM& givenTeam)
+void addSchool(const SCHOOL& givenSchool)
 {
     try {
-        if (!teams.is_open()) throw "1";
-        string saveLine = "\n" + givenTeam.teamName + "|" + givenTeam.description +"|"+ givenTeam.creationDate + ";";
+        if (!schools.is_open()) throw "1";
+        string saveLine = "\n" + givenSchool.schoolName + "|" + givenSchool.town + "|" + givenSchool.address + ";";
         cout << saveLine;
-        teams << saveLine;
-        closeTeamsFile();
-        openTeamsFile();
-        system("pause");
+        schools << saveLine;
+        closeSchoolFile();
+        openSchoolFile();
     }
     catch (string val) {
         if (val == "1") { cout << "Couldn't open file."; }
     }
 }
 
-void showAllTeams() {
+void showAllSchools() {
     std::string text;
     int line = 0;
-    while (getline(teams, text, '\n'))
+    while (getline(schools, text, '\n'))
     {
         if (text.empty())
             continue;
@@ -64,15 +63,15 @@ void showAllTeams() {
                 counter++;
                 if (counter == 1)
                 {
-                    cout << "Name: " << " ";
+                    cout << "School Name: " << " ";
                 }
                 else if (counter == 2)
                 {
-                    cout << "Description: " << " ";
+                    cout << "School Town: " << " ";
                 }
                 else if (counter == 3)
                 {
-                    cout << "Date of Creation: " << " ";
+                    cout << "School Address: " << " ";
                 }
                 cout << name << endl;
                 name.clear();
@@ -86,14 +85,14 @@ void showAllTeams() {
     }
 }
 
-void deleteTeamByLine(int n)
+void deleteSchoolByLine(int n)
 {
     ofstream ofs;
     ofs.open("temp.txt", ofstream::out);
 
     char c;
     int line_no = 1;
-    while (teams.get(c))
+    while (schools.get(c))
     {
         if (c == '\n')
             line_no++;
@@ -104,11 +103,11 @@ void deleteTeamByLine(int n)
 
     ofs.close();
 
-    teams.close();
+    schools.close();
 
-    remove("teams.txt");
-    int _ = rename("temp.txt", "teams.txt");
+    remove("schools.txt");
+    int _ = rename("temp.txt", "schools.txt");
 
-    openTeamsFile();
+    openSchoolFile();
 }
 
