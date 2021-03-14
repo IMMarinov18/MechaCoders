@@ -139,6 +139,57 @@ void showStudentsMenu()
     }
 }
 
+void showTeamsMenu()
+{
+    bool chosenCorrect = false;
+    while (!chosenCorrect)
+    {
+        char val = enterCharInput();
+        if (val == '1')
+        {
+            // Add Team
+            clearScreen();
+            enterStudentInput();
+            chosenCorrect = true;
+        }
+        if (val == '2')
+        {
+            // Show All Teams
+            clearScreen();
+            showAllStudents();
+            system("pause");
+            chosenCorrect = true;
+        }
+        if (val == '3')
+        {
+            // Find A Team
+            clearScreen();
+            string input = enterStringInput();
+            FindStudentsByFName(input);
+            chosenCorrect = true;
+        }
+        if (val == '4')
+        {
+            // Delete Teams
+            clearScreen();
+            string input = enterStringInput();
+            int intInput = stoi(input);
+            deleteStudentByLine(intInput);
+        }
+        if (val == '0')
+        {
+            // Go Back
+            chosenCorrect = true;
+        }
+        if (chosenCorrect == false)
+        {
+            clearScreen();
+            mainMenuInteraction1Menu();
+            retryInput(); // Method in "menutexts.h"
+        }
+    }
+}
+
 void showTeachersMenu()
 {
     bool chosenCorrect = false;

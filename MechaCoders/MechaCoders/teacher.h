@@ -14,3 +14,4 @@ struct TEACHER {
 
 extern void addTeacher(const TEACHER& gt);
 extern void showAllTeachers();
+extern void FindTeacherByFName(const std::string& inputName);

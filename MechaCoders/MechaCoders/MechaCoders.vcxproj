@@ -152,6 +152,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Students.cpp" />
     <ClCompile Include="teachers.cpp" />
+    <ClCompile Include="teams.cpp" />
     <ClCompile Include="texts.cpp" />
   </ItemGroup>
   <ItemGroup>

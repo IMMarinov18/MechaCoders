@@ -1,36 +1,18 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "student.h"
+#include "team.h"
 #include "main.h"
+#include "student.h"
+
 using namespace std;
-
-string setStringLower(string i);
-int getLinesFromFile();
-void FindStudentsByFName(const std::string& inputName);
-void addStudent(const STUDENT& givenStudent);
-void deleteStudentByLine(int n);
-void showAllStudents();
-
-string setStringLower(string input)
-{
-    for (int i = 0; i < input.length(); i++)
-    {
-        if (!islower(input[i]))
-        {
-            input[i] = tolower(input[i]);
-        }
-    }
-    return input;
-}
-
 
 int getLinesFromFile()
 {
     string text;
     const char newLine = ';';
     int numLines = 0;
-    while (getline(students, text, '\n'))
+    while (getline(teams, text, '\n'))
     {
         for (size_t i = 0; i < text.length(); i++)
         {
@@ -43,12 +25,12 @@ int getLinesFromFile()
     return numLines;
 }
 
-void FindStudentsByFName(const std::string& inputName)
+void FindTeamByFName(const std::string& inputName)
 {
-    if (!students.is_open()) return;
+    if (!teams.is_open()) return;
     string line;
     int counter = 0;
-    while (getline(students, line, '\n')) {
+    while (getline(teams, line, '\n')) {
         string name = "";
         for (int i = 0; i < line.length(); i++) {
             char symbol = line.at(i);
@@ -68,13 +50,13 @@ void FindStudentsByFName(const std::string& inputName)
     if (counter < 1)
         cout << "No student name matches found." << endl;
 }
-void addStudent(const STUDENT& givenStudent)
+void addStudent(const TEAM& givenTeam)
 {
     try {
-        if (!students.is_open()) throw "1";
-        string saveLine = "\n" + givenStudent.studentFName + "|" + givenStudent.studentLName + "|" + givenStudent.grade + "|" + givenStudent.Class + "|" + givenStudent.studentEmail + "|" + givenStudent.studentsTeam.teamName + "|";
+        if (!teams.is_open()) throw "1";
+        string saveLine = "\n" + givenTeam.teamName + givenTeam.description + givenTeam.creationDate + ";";
         cout << saveLine;
-        students << saveLine;
+        teams << saveLine;
         closeAllFiles();
         openAllFiles();
     }
@@ -83,14 +65,14 @@ void addStudent(const STUDENT& givenStudent)
     }
 }
 
-void deleteStudentByLine(int n)
+void deleteTeamByLine(int n)
 {
     ofstream ofs;
     ofs.open("temp.txt", ofstream::out);
 
     char c;
     int line_no = 1;
-    while (students.get(c))
+    while (teams.get(c))
     {
         if (c == '\n')
             line_no++;
@@ -103,21 +85,21 @@ void deleteStudentByLine(int n)
 
     students.close();
 
-    remove("students.txt");
-    int _ = rename("temp.txt", "students.txt");
+    remove("teams.txt");
+    int _ = rename("temp.txt", "teams.txt");
 
     openAllFiles();
 }
 
-void showAllStudents() {
+void showAllTeams() {
     std::string text;
     int line = 0;
-    while (getline(students, text, '\n'))
+    while (getline(teams, text, '\n'))
     {
         if (text.empty())
             continue;
         line++;
-        cout << line << ". ";
+        cout << "-" << line << "-" << endl;
         string name;
         for (int i = 0; i < text.length(); i++) {
             char symbol = text.at(i);

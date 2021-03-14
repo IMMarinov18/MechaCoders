@@ -21,8 +21,6 @@ bool mainMenu() {
 }
 
 int main() {
-    //string a = "a  k";
-   // trim(a); cout << a << endl;
     openAllFiles();
     while (mainMenu());
     closeAllFiles();

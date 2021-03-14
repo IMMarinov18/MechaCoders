@@ -2,6 +2,7 @@
 #include <fstream>
 #include "teacher.h"
 #include "main.h"
+#include "student.h"
 using namespace std;
 
 void addTeacher(const TEACHER& givenTeacher)
@@ -46,8 +47,51 @@ void deleteTeacherByLine(int n)
 
 void showAllTeachers() {
     std::string text;
-    while (getline(students, text))
+    int line = 0;
+    while (getline(teachers, text,'\n'))
     {
-        cout << text << endl;
+        if (text.empty())
+            continue;
+        line++;
+        cout << line << ". ";
+        string name;
+        for (int i = 0; i < text.length(); i++) {
+            char symbol = text.at(i);
+            if (symbol == ',') {
+                cout << name << " ";
+                name.clear();
+            }
+            else {
+                name = name + symbol;
+            }
+        }
+        name.clear();
+        cout << endl;
     }
+}
+
+void FindTeacherByFName(const std::string& inputName)
+{
+    if (!teachers.is_open()) return;
+    string line;
+    int counter = 0;
+    while (getline(teachers, line, '\n')) {
+        string name = "";
+        for (int i = 0; i < line.length(); i++) {
+            char symbol = line.at(i);
+            if (symbol == ',') {
+                break;
+            }
+            else {
+                name = name + symbol;
+            }
+        }
+        if (setStringLower(name) == setStringLower(inputName))
+        {
+            counter++;
+            cout << line << endl;
+        }
+    }
+    if (counter < 1)
+        cout << "No teacher name matches found." << endl;
 }
