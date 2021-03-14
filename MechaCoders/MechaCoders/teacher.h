@@ -1,4 +1,7 @@
 #pragma once
+#ifndef FILE.H
+#define FILE.H
+
 #include <string>
 #include "team.h"
 
@@ -8,3 +11,7 @@ struct TEACHER {
     TEAM teams[10];
     std::string teacherEmail;
 };
+
+
+
+#endif

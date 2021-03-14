@@ -147,10 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MechaCoders.cpp" />
+    <ClCompile Include="datasavingandloading.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Students.cpp" />
+    <ClCompile Include="teachers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="SaveData.h" />
     <ClInclude Include="school.h" />
     <ClInclude Include="student.h" />

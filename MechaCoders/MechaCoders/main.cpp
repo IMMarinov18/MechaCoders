@@ -1,10 +1,12 @@
-﻿#include <iostream>
-#include <string>
+﻿#include <string>
 #include <fstream>
 #include "textMenus.h"
 #include "SaveData.h"
 #include "functions.h"
 using namespace std;
+
+
+
 
 void chooseDataType() {
     chooseTypeText();

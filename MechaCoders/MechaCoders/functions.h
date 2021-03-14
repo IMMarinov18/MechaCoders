@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include "student.h"
+#include "main.h"
+
 using namespace std;
 
 void showInputTypeMenu();
@@ -75,11 +77,7 @@ void showStudentsMenu()
         {
             clearScreen();
             string input = enterStringInput();
-            vector<string> table = FindStudentsByFName(input);
-            for (auto i = table.begin(); i <= table.end(); i++)
-            {
-                cout << *i;
-            }
+            FindStudentsByFName(input);
             chosenCorrect = true;
         }
         if (val == '5')

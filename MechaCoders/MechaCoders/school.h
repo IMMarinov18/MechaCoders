@@ -12,3 +12,4 @@ struct SCHOOL {
     TEAM sTeams[10];
     TEACHER sTeachers[10];
 };
+
