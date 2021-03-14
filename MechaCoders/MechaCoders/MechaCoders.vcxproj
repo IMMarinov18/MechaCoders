@@ -148,14 +148,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="datasavingandloading.cpp" />
+    <ClCompile Include="functionTexts.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Students.cpp" />
     <ClCompile Include="teachers.cpp" />
+    <ClCompile Include="texts.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="SaveData.h" />
     <ClInclude Include="school.h" />
     <ClInclude Include="student.h" />
     <ClInclude Include="teacher.h" />

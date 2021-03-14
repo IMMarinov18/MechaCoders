@@ -1,17 +1,16 @@
 #pragma once
-#ifndef FILE.H
-#define FILE.H
-
+#include <vector>
 #include <string>
 #include "team.h"
 
 struct TEACHER {
     std::string teachersFName;
     std::string teachersLName;
-    TEAM teams[10];
+    std::vector<TEAM> teams[10];
     std::string teacherEmail;
+    std::string grade;
+    char Class;
 };
 
-
-
-#endif
+extern void addTeacher(const TEACHER& gt);
+extern void showAllTeachers();

@@ -1,17 +1,18 @@
 #pragma once
+
 #include "team.h"
 
 struct STUDENT {
-    string studentFName;
-    string studentLName;
-    string grade;
+    std::string studentFName;
+    std::string studentLName;
+    std::string grade;
     char Class = ' ';
-    string studentEmail;
+    std::string studentEmail;
     TEAM studentsTeam;
 };
 
-string setStringLower(string input);
-void FindStudentsByFName(const std::string& inputName);
-void addStudent(const STUDENT& givenStudent);
-void deleteStudentByLine(int n);
-void showAllStudents();
+extern std::string setStringLower(std::string i);
+extern void FindStudentsByFName(const std::string& inputName);
+extern void addStudent(const STUDENT& givenStudent);
+extern void deleteStudentByLine(int n);
+extern void showAllStudents();

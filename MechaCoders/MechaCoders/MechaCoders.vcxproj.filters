@@ -27,6 +27,12 @@
     <ClCompile Include="teachers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="functionTexts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="student.h">
@@ -39,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="school.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textMenus.h">

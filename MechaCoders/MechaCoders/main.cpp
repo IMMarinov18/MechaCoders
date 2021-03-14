@@ -1,10 +1,10 @@
 ﻿#include <string>
 #include <fstream>
 #include "textMenus.h"
-#include "SaveData.h"
 #include "functions.h"
-using namespace std;
+#include "main.h"
 
+using namespace std;
 
 
 
@@ -21,6 +21,8 @@ bool mainMenu() {
 }
 
 int main() {
+    //string a = "a  k";
+   // trim(a); cout << a << endl;
     openAllFiles();
     while (mainMenu());
     closeAllFiles();

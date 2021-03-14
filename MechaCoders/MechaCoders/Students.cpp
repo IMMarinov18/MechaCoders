@@ -1,10 +1,16 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "student.h"
-#include "SaveData.h"
-#include "datasavingandloading.cpp"
+#include "main.h"
 using namespace std;
 
+string setStringLower(string i);
+int getLinesFromFile();
+void FindStudentsByFName(const std::string& inputName);
+void addStudent(const STUDENT& givenStudent);
+void deleteStudentByLine(int n);
+void showAllStudents();
 
 string setStringLower(string input)
 {
@@ -46,7 +52,7 @@ void FindStudentsByFName(const std::string& inputName)
         string name = "";
         for (int i = 0; i < line.length(); i++) {
             char symbol = line.at(i);
-            if (symbol == ' ') {
+            if (symbol == ',') {
                 break;
             }
             else {
@@ -66,7 +72,7 @@ void addStudent(const STUDENT& givenStudent)
 {
     try {
         if (!students.is_open()) throw "1";
-        string saveLine = "\n" + givenStudent.studentFName + " " + givenStudent.studentLName + " " + givenStudent.grade + " " + givenStudent.Class + " " + givenStudent.studentEmail + " " + givenStudent.studentsTeam.teamName + ";";
+        string saveLine = "\n" + givenStudent.studentFName + "," + givenStudent.studentLName + "," + givenStudent.grade + "," + givenStudent.Class + "," + givenStudent.studentEmail + "," + givenStudent.studentsTeam.teamName + ";";
         cout << saveLine;
         students << saveLine;
         closeAllFiles();
