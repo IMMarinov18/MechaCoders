@@ -404,7 +404,7 @@ void showInputTypeMenu()
         }
         if (val == '4')
         {
-            mainMenuInteraction2Menu();
+            mainMenuInteraction1Menu();
             showStudentsMenu();
             // Students
             chosenCorrect = true;
